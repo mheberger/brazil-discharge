@@ -33,7 +33,7 @@ import requests
 gagesfile = 'C:/Data/Discharge/Observed/Brazil/py_downloader/gagelist.txt'
 
 #Where to save the files. These are going to be a bunch of .zip files
-out_path =  'C:/Data/Discharge/Observed/Brazil/new2/'
+out_path =  'C:/Data/Discharge/Observed/Brazil/data/'
 
 # I'm not sure whether this is necessary, but if you hit some servers with too many requests in too short a time, 
 #they will block your IP address. One way around this is to add a little pause in between requests. 

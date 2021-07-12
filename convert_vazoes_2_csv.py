@@ -32,7 +32,7 @@ import os
 
 # PARAMETERS: 
 # Folder containing the text files of discharge date 
-data_folder = 'C:/Data/Discharge/Observed/Brazil/new2/'
+data_folder = 'C:/Data/Discharge/Observed/Brazil/data/'
 
 #Folder where you want your output to go
 output_folder = 'C:/Data/Discharge/Observed/Brazil/csv/'
