@@ -13,7 +13,7 @@ The purpose of these Python scripts was to extend these records to include daily
 
 Thank you to Ayan Santos Fleischmann and Jessica Fontoura at the Instituto de Pesquisas Hidráulicas (IPH/UFRGS) for help in understanding these data and files. 
 
-## Reference: ##
+## References: ##
 
 Almagro, André, Paulo Tarso S. Oliveira, Antônio Alves Meira Neto, Tirthankar Roy, and Peter Troch. 2021. “CABra: A Novel Large-Sample Dataset for Brazilian Catchments.” Hydrology and Earth System Sciences 25 (6): 3105–35. https://doi.org/10.5194/hess-25-3105-2021.
 
