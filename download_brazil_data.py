@@ -16,9 +16,10 @@ This script expects a text file with a list of gages on each line, e.g.:
 The requests themselves are really simple. You request a URL like
 https://www.snirh.gov.br/hidroweb/rest/api/documento/convencionais?tipo=2&documentos=10100000
 and also send the right cookies in a header, and the server returns a zip file with lots of data in it.
+(Can include a rating curve, water quality data, all kinds of stuff in addition to flow.)
 
-Next, you can manually extract the files. Archive or delete the files you don't want, and keep the files labeled vazoes...
-These are the flow data. 
+Next, you can manually extract the files. Archive or delete the files you don't want,
+and keep the files labeled vazoes...these are the ones with flow data in them. 
 
 Matthew Heberger, matthew.heberger@obspm.fr
 Updated: 2021-07-12
@@ -94,7 +95,7 @@ for gage in gages:
         
 #Output the list of failed gages
 f = open('failed.txt', 'w')
-f.writelines(failed)
+f.write('\n'.join(failed_gages))
 f.close()
 
 # It's done... you may wish to play a little beep here. This one worked for me. 

@@ -53,6 +53,8 @@ output_folder = 'C:/Data/Discharge/Observed/Brazil/csv/'
 2020   78
 """
 
+#We want our data to be "orthonormal" - i.e. each time series should have the same start and end date
+# so each is the same number of rows -- this will allow efficient handling and processing
 start_date = '1970-01-01' 
 end_date = '2020-12-31' #I found there is about 5-month lag in posting the daily flows. 
 
@@ -60,7 +62,12 @@ end_date = '2020-12-31' #I found there is about 5-month lag in posting the daily
 # BEGIN PROCESSING
 
 # Get a list of all the files in the folder.
-files = os.listdir(data_folder)
+#files = os.listdir(data_folder)
+
+#This version will skip any folders you may have...
+os.chdir(data_folder)
+
+files = [f for f in os.listdir('.') if os.path.isfile(f)]
 num_files = len(files)
 i = 0  # counter to keep track of which file we are currently processing (just to give some status output to monitor the script) 
 

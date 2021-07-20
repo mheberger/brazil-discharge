@@ -11,16 +11,17 @@ import numpy as np
 import pandas as pd
 import datetime
 
+LOGSCALE = False
 
 #Make the figure window - just do this once and reuse to be efficient. 
 #Make the figure window 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13,4), gridspec_kw = {'width_ratios':[4, 1]})
 
 #Get rid of some excess whitespace at the edges of the figure window
-fig.tight_layout()
+#fig.tight_layout()
 
-in_folder = 'C:/Data/Discharge/Observed/Brazil/csv/'
-out_folder ='C:/Data/Discharge/Observed/Brazil/plots/'
+in_folder = 'ayan/csv/'
+out_folder ='../plots/'
 
 files = os.listdir(in_folder)
 n = len(files)
@@ -53,8 +54,12 @@ for fname in files:
     ax1.plot(df.index, df.missing, linewidth=3, color='r')
     
     ax1.set_ylabel('Discharge, m³/s')
-    ax1.set_ylim(bottom=0)
-    ylims = ax1.get_ylim()
+    
+    if LOGSCALE:
+        ax1.set_yscale('log')
+    else:
+        ax1.set_ylim(bottom=0)
+    #ylims = ax1.get_ylim()
     ax1.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter('{x:,.0f}'))
     ax1.set_title("Station " + gage)
     
@@ -64,13 +69,19 @@ for fname in files:
                          
     ax2.bar(m.index,m)
     ax2.set_xticks(m.index)
+    if LOGSCALE:
+        ax1.set_yscale('log')
     #ax2.set_ylim(my_ylims) #I had the idea to make the two plots have the same y axis, but it wasn't nice looking
     ax2.set_title("Monthly Averages")
     ax2.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter('{x:,.0f}'))
      
     #Save the figure with the gage ID as the filename
     
-    fname = out_folder + 'TS_' + gage + '.jpg'
+    if LOGSCALE:
+        fname = out_folder + 'TS_' + gage + '_log.jpg' 
+    else:
+        fname = out_folder + 'TS_' + gage + '.jpg'
+    
     fig.savefig(fname, dpi=75)
     
     #Clear the axes to prepare for the next plots
